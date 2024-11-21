@@ -1,0 +1,52 @@
+services:
+  db:
+    container_name: python_async_db
+    build:
+      context: ./database
+      dockerfile: Dockerfile
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB_FILE: /run/secrets/postgres_auth
+      POSTGRES_USER_FILE: /run/secrets/postgres_auth
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_auth
+    secrets:
+      - postgres_auth
+
+  redis:
+    container_name: python_async_redis
+    build:
+      context: ./redis
+      dockerfile: Dockerfile
+    ports:
+      - "6379:6379"
+
+  backend:
+    container_name: python_async_backend_container
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - db
+      - redis
+
+  frontend:
+    container_name: react_frontend_container
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+
+secrets:
+  postgres_auth:
+    file: ./database/postgres_auth.txt
+    
+volumes:
+  pgdata: {}

@@ -1,0 +1,51 @@
+# Ignore local development configuration
+.env
+
+# Ignore Docker related files
+docker-compose.override.yml
+
+# Ignore PostgreSQL data directory
+/database/*.txt
+
+# Ignore Redis data directory
+redis-data/
+
+# Ignore system and temporary files
+*.log
+*.swp
+.DS_Store
+Thumbs.db
+
+# Ignore compiled files
+*.pyc
+__pycache__/
+
+# Ignore virtual environment
+venv/
+.venv/
+
+# Ignore IDE-specific files and directories
+.idea/
+.vscode/
+
+# Ignore cache and compiled files
+*.pyc
+__pycache__/
+.pytest_cache
+
+# Ignore runtime and build artifacts
+*.pyo
+*.pyc
+*.pyd
+
+# Ignore local SQLite database file
+db.sqlite3
+
+# Ignore macOS metadata
+._*
+.DS_Store
+# Ignore all files in migration directories
+**/migrations/*
+
+# But do not ignore __init__.py
+!**/migrations/__init__.py
