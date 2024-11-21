@@ -23,7 +23,7 @@ To get started with the project, follow these steps:
 
 1. **Clone the repository to your local machine:**
    ```sh
-   git clone https://github.com/gaurav-jo1/AsyncChat-app
+   git clone https://github.com/Pramod-Singh-Khati/AsyncChat-App
    ```
 
 2. **Navigate to the project directory:**
